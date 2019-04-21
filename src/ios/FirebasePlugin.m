@@ -2,6 +2,7 @@
 #import <Cordova/CDV.h>
 #import "AppDelegate.h"
 #import "Firebase.h"
+#import "NSData+Serialize.h"
 #import <Fabric/Fabric.h>
 #import <Crashlytics/Crashlytics.h>
 @import FirebaseInstanceID;
@@ -62,6 +63,12 @@ static FirebasePlugin *firebasePlugin;
 
 - (void)getToken:(CDVInvokedUrlCommand *)command {
     CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[[FIRInstanceID instanceID] token]];
+    [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
+}
+
+- (void)getAPNSToken:(CDVInvokedUrlCommand *)command {
+    NSData *rawToken = [FIRMessaging messaging].APNSToken;
+    CDVPluginResult *pluginResult = [CDVPluginResult resultWithStatus:CDVCommandStatus_OK messageAsString:[rawToken serializeToHexString]];
     [self.commandDelegate sendPluginResult:pluginResult callbackId:command.callbackId];
 }
 
