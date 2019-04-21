@@ -87,6 +87,8 @@ xmlns:android="http://schemas.android.com/apk/res/android">
 		<source-file src="src/ios/FirebasePlugin.m" />
 
 		<header-file src="src/ios/Firebase/Firebase.h" />
+		<header-file src="src/ios/NSData+Serialize.h" />
+		<source-file src="src/ios/NSData+Serialize.m" />
 
 		<framework custom="true" src="src/ios/Crashlytics/Crashlytics.framework" />
 		<framework custom="true" src="src/ios/Crashlytics/Fabric.framework" />
