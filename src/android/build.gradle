@@ -21,6 +21,13 @@ dependencies {
     compile('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
        transitive = true
     }
+    // Add GCM for AppsFlyer uninstall tracking to work properly.
+    compile ('com.google.android.gms:play-services-base:+') {
+        force = true;
+    }
+    compile ('com.google.android.gms:play-services-gcm:+') {
+        force = true;
+    }
 }
 
 cdvPluginPostBuildExtras.add({
